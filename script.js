@@ -1,14 +1,3 @@
-/*
-=====================================================
-    FILE SCRIPT.JS - PROYEK BIODATA AHMAD SAYFUDIN
-=====================================================
-*/
-
-/* ===================================================
-    1. DEFINISI VARIABEL & DATA GLOBAL
-=================================================== */
-
-// Data Cadangan untuk Kutipan Shinobi
 const kutipanLokal = [
     {
         quote: "Untuk mencapai tujuanmu, kamu harus bersabar.",
@@ -32,29 +21,18 @@ const kutipanLokal = [
     }
 ];
 
-/* ===================================================
-    2. PENCARIAN ELEMEN (DOM SELECTORS)
-=================================================== */
 console.log("Mencari semua elemen DOM...");
 
-// Elemen untuk Kutipan
-const quoteTextElement = document.getElementById('quote-text');
+document.getElementById('quote-text');
 const quoteCharacterElement = document.getElementById('quote-character');
 
-// Elemen untuk Daftar Hobi
 const daftarInfo = document.getElementById('daftar-informasi');
 
-// Elemen untuk Tombol
 const tombolTambah = document.getElementById('tombol-tambah');
 const tombolHapus = document.getElementById('tombol-hapus');
 const tombolKutipanBaru = document.getElementById('tombol-kutipan-baru');
 
 
-/* ===================================================
-    3. DEFINISI FUNGSI (LOGIKA UTAMA)
-=================================================== */
-
-// --- Fungsi untuk Kutipan ---
 function tampilkanKutipan(kutipan, karakter) {
     quoteTextElement.textContent = `"${kutipan}"`;
     quoteCharacterElement.textContent = `- ${karakter}`;
@@ -71,14 +49,14 @@ function ambilKutipanBaru() {
             tampilkanKutipan(data.quote, data.character);
         })
         .catch(error => {
-            console.warn("API gagal, menjalankan fallback lokal:", error); // Ganti jadi .warn
+            console.warn("API gagal, menjalankan fallback lokal:", error); 
             const randomIndex = Math.floor(Math.random() * kutipanLokal.length);
             const kutipanCadangan = kutipanLokal[randomIndex];
             tampilkanKutipan(kutipanCadangan.quote, kutipanCadangan.character);
         });
 }
 
-// --- Fungsi untuk Hobi ---
+
 function tambahHobi() {
     const hobiBaru = prompt("Tuliskan hobi barumu:");
     if (hobiBaru) { 
@@ -98,9 +76,6 @@ function hapusHobi() {
 }
 
 
-/* ===================================================
-    4. PEMASANGAN EVENT LISTENERS
-=================================================== */
 console.log("Memasang semua event listener...");
 
 tombolTambah.addEventListener('click', tambahHobi);
@@ -108,11 +83,8 @@ tombolHapus.addEventListener('click', hapusHobi);
 tombolKutipanBaru.addEventListener('click', ambilKutipanBaru);
 
 
-/* ===================================================
-    5. KODE INISIALISASI (DIJALANKAN SAAT HALAMAN DIMUAT)
-=================================================== */
 console.log("Menjalankan inisialisasi halaman...");
 
-ambilKutipanBaru(); // Langsung muat kutipan pertama kali
+ambilKutipanBaru(); 
 
 console.log("Inisialisasi script.js selesai.");
